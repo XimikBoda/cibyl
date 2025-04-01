@@ -2,16 +2,16 @@ TGT=x-tools
 
 all: make_tarball
 
-.PHONY: crosstool-ng-1.9.1 crosstool_install toolchain_build clean_install \
+.PHONY: crosstool-ng-1.27.0 crosstool_install toolchain_build clean_install \
 	install_replacements do_chmod make_tarball clean
 
-crosstool-ng-1.9.1.tar.bz2:
-	wget http://ymorin.is-a-geek.org/download/crosstool-ng/$@
+crosstool-ng-1.27.0.tar.bz2:
+	wget https://github.com/crosstool-ng/crosstool-ng/releases/download/crosstool-ng-1.27.0/crosstool-ng-1.27.0.tar.bz2
 
-crosstool-ng-1.9.1: crosstool-ng-1.9.1.tar.bz2
+crosstool-ng-1.27.0: crosstool-ng-1.27.0.tar.bz2
 	tar -xjf $<
 
-crosstool_install: crosstool-ng-1.9.1
+crosstool_install: crosstool-ng-1.27.0
 	cd $< && ./configure --prefix=`pwd`/../$@ && make && make install
 
 toolchain_build: ct-ng.config crosstool_install
@@ -52,5 +52,5 @@ make_tarball: install_replacements
 
 # Remove everything except crosstool
 clean:
-	rm -rf crosstool-ng-1.9.1 crosstool_install x-tools toolchain_build jasmin-2.4
+	rm -rf crosstool-ng-1.27.0 crosstool_install x-tools toolchain_build jasmin-2.4
 	rm -rf mips-cibyl-elf.tar.bz2
