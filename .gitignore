@@ -16,3 +16,5 @@ res/
 toolchain/crosstool*
 toolchain/toolchain*
 toolchain/x-tools
+toolchain/jasmin-*
+toolchain/mips-cibyl-*
